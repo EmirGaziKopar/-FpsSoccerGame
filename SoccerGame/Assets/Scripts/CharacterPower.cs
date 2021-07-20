@@ -7,13 +7,21 @@ public class CharacterPower : MonoBehaviour
     new Rigidbody rigidbody;
     GameObject top;
     [SerializeField]float power=50f;
+    [SerializeField] float dribblingPower = 10f;
     bool touch;
 
     public void shoot()
     {
         rigidbody = top.GetComponent<Rigidbody>();
         Vector3 a = new Vector3(this.transform.forward.x, Random.Range(0f, 0.5f), this.transform.forward.z); //Topun karþýya gitmesini saðlayan z.
-        rigidbody.velocity = a*power;
+        rigidbody.velocity = a * power;
+    }
+
+    public void dribbling()
+    {
+        rigidbody = top.GetComponent<Rigidbody>();
+        Vector3 a = new Vector3(this.transform.forward.x, 0f, this.transform.forward.z); //Topun karþýya gitmesini saðlayan z.
+        rigidbody.velocity = a * dribblingPower;
     }
 
     private void Update()
@@ -22,6 +30,12 @@ public class CharacterPower : MonoBehaviour
         {
             shoot();
             Debug.Log("suuut ve gool");
+        }
+
+        else if (touch == true && Input.GetMouseButtonUp(1))
+        {
+            dribbling();
+            Debug.Log("O ne sürmek öyle");
         }
 
 

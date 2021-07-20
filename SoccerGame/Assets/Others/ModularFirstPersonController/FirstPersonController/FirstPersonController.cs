@@ -224,7 +224,7 @@ public class FirstPersonController : MonoBehaviour
 
             transform.localEulerAngles = new Vector3(0, yaw, 0);
             playerCamera.transform.localEulerAngles = new Vector3(pitch, 0, 0);
-        }
+        } 
 
         #region Camera Zoom
 
@@ -246,17 +246,7 @@ public class FirstPersonController : MonoBehaviour
 
             // Changes isZoomed when key is pressed
             // Behavior for hold to zoom
-            if(holdToZoom && !isSprinting)
-            {
-                if(Input.GetKeyDown(zoomKey))
-                {
-                    isZoomed = true;
-                }
-                else if(Input.GetKeyUp(zoomKey))
-                {
-                    isZoomed = false;
-                }
-            }
+            
 
             // Lerps camera.fieldOfView to allow for a smooth transistion
             if(isZoomed)
@@ -358,7 +348,7 @@ public class FirstPersonController : MonoBehaviour
 
 
         
-        CheckGround();
+        
 
         if(enableHeadBob)
         {
@@ -366,8 +356,31 @@ public class FirstPersonController : MonoBehaviour
         }
     }
 
+
+    
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if ( collision.gameObject.tag == "Ground")
+        {
+            isGrounded = true;
+        }
+        else
+        {
+
+            isGrounded = false;
+        }
+
+    }
+
+
+
     void FixedUpdate()
     {
+
+
+
+
         #region Movement
 
         if (playerCanMove)
@@ -444,22 +457,7 @@ public class FirstPersonController : MonoBehaviour
     }
 
     // Sets isGrounded based on a raycast sent straigth down from the player object
-    private void CheckGround()
-    {
-        Vector3 origin = new Vector3(transform.position.x, transform.position.y - (transform.localScale.y * .5f), transform.position.z);
-        Vector3 direction = transform.TransformDirection(Vector3.down);
-        float distance = .75f;
-
-        if (Physics.Raycast(origin, direction, out RaycastHit hit, distance))
-        {
-            Debug.DrawRay(origin, direction * distance, Color.red);
-            isGrounded = true;
-        }
-        else
-        {
-            isGrounded = false;
-        }
-    }
+    
 
     private void Jump()
     {
