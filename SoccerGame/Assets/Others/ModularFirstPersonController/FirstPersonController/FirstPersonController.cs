@@ -356,6 +356,8 @@ public class FirstPersonController : MonoBehaviour
 
         #endregion
 
+
+        
         CheckGround();
 
         if(enableHeadBob)

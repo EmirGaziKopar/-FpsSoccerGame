@@ -12,7 +12,7 @@ public class CharacterPower : MonoBehaviour
     public void shoot()
     {
         rigidbody = top.GetComponent<Rigidbody>();
-        Vector3 a = new Vector3(this.transform.forward.x, Random.Range(0f, 1f), this.transform.forward.z); //Topun karþýya gitmesini saðlayan z.
+        Vector3 a = new Vector3(this.transform.forward.x, Random.Range(0f, 0.5f), this.transform.forward.z); //Topun karþýya gitmesini saðlayan z.
         rigidbody.velocity = a*power;
     }
 
@@ -23,6 +23,9 @@ public class CharacterPower : MonoBehaviour
             shoot();
             Debug.Log("suuut ve gool");
         }
+
+
+
     }
 
     private void OnTriggerEnter(Collider other)
