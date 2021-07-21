@@ -5,26 +5,70 @@ using UnityEngine;
 public class GoalKeeperMover : MonoBehaviour
 {
 
-    BallPosition ball; //Eriþilmek istenen nesne
-    public GameObject ballPosition; 
+    BallPosition ballPosition; //Eriþilmek istenen nesne'nin scripti
+    public GameObject ballPointer; //
+    public GameObject isPassedPointer;
+    
+
+    
+
+
+    [SerializeField]isPassed isPassed;
+
 
     
     
 
     private void Awake()
     {
-        ball = ballPosition.GetComponent<BallPosition>();
+        ballPosition = ballPointer.GetComponent<BallPosition>();
+
+        isPassed = isPassedPointer.GetComponent<isPassed>();
+
+
+        
+        
 
     }
 
     private void Update()
     {
 
-
-        if(ball.transform.position.x > 41 && ball.transform.position.x < 58)
+        if (isPassed.isAccess == true)
         {
-            transform.position = new Vector3(ball.transform.position.x, transform.position.y, transform.position.z);
+            
+
+                
+                if(ballPosition.transform.position.x > 40 && ballPosition.transform.position.x <= 50 && ballPosition.transform.position.y > 5) //left
+                {
+                    
+                    transform.position = new Vector3(ballPosition.transform.position.x, transform.position.y, transform.position.z);
+                    transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, +60), .1f);
+                
+                }
+
+                
+                else if(ballPosition.transform.position.x > 50 && ballPosition.transform.position.x < 60 && ballPosition.transform.position.y > 5) // right
+                {
+              
+                    transform.position = new Vector3(ballPosition.transform.position.x, transform.position.y, transform.position.z);
+                    transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, -60), .1f);
+               
+                }
+                else if (ballPosition.transform.position.x > 40 && ballPosition.transform.position.x < 60 && ballPosition.transform.position.y <= 5)
+                {
+                transform.position = new Vector3(ballPosition.transform.position.x, transform.position.y, transform.position.z);
+                }
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, 0), .1f);
+                
         }
+
+
+
+
+        
+
+        
         
 
     }

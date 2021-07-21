@@ -10,6 +10,7 @@ public class CharacterPower : MonoBehaviour
     [SerializeField] float dribblingPower = 10f;
     bool touch;
 
+
     public void shoot()
     {
         rigidbody = top.GetComponent<Rigidbody>();
