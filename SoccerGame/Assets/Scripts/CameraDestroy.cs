@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraDestroy : MonoBehaviour
 {
 
-    float time = 10f;
+    float time = 0f;
     
 
     private void Update()

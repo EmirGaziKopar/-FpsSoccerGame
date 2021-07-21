@@ -12,6 +12,8 @@ public class GoalKeeperMover : MonoBehaviour
 
     
 
+    
+
 
     [SerializeField]isPassed isPassed;
 
@@ -25,6 +27,8 @@ public class GoalKeeperMover : MonoBehaviour
 
         isPassed = isPassedPointer.GetComponent<isPassed>();
 
+        
+
 
         
         
@@ -33,13 +37,15 @@ public class GoalKeeperMover : MonoBehaviour
 
     private void Update()
     {
+       
 
-        if (isPassed.isAccess == true)
+        if (isPassed.isAccess == true )
         {
             
-
                 
-                if(ballPosition.transform.position.x > 40 && ballPosition.transform.position.x <= 45 && ballPosition.transform.position.y > 5) //left
+            
+
+            if (ballPosition.transform.position.x > 40 && ballPosition.transform.position.x <= 45 && ballPosition.transform.position.y > 5) //left
                 {
                     
                     transform.position = new Vector3(ballPosition.transform.position.x, transform.position.y, transform.position.z);
