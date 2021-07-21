@@ -6,6 +6,8 @@ public class isPassed : MonoBehaviour
 {
     public bool isAccess;
 
+   
+
     private void Awake()
     {
         isAccess = false;
@@ -16,20 +18,26 @@ public class isPassed : MonoBehaviour
     
 
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if(other.tag == "Ball")
-        {
-            isAccess = false;
-        }
 
-    }
-    private void OnTriggerExit(Collider other)
-    {
+        
         if (other.tag == "Ball")
         {
             isAccess = true;
         }
+        
+        
+
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Ball")
+        {
+            isAccess = false;
+        }
+    }
+
 
 }
