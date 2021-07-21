@@ -39,7 +39,7 @@ public class GoalKeeperMover : MonoBehaviour
             
 
                 
-                if(ballPosition.transform.position.x > 40 && ballPosition.transform.position.x <= 50 && ballPosition.transform.position.y > 5) //left
+                if(ballPosition.transform.position.x > 40 && ballPosition.transform.position.x <= 47 && ballPosition.transform.position.y > 5) //left
                 {
                     
                     transform.position = new Vector3(ballPosition.transform.position.x, transform.position.y, transform.position.z);
@@ -47,8 +47,12 @@ public class GoalKeeperMover : MonoBehaviour
                 
                 }
 
+                else if (ballPosition.transform.position.x > 47 && ballPosition.transform.position.x < 53)
+                {
+                    transform.position = new Vector3(ballPosition.transform.position.x, transform.position.y, transform.position.z);
+                }
                 
-                else if(ballPosition.transform.position.x > 50 && ballPosition.transform.position.x < 60 && ballPosition.transform.position.y > 5) // right
+                else if(ballPosition.transform.position.x >= 53 && ballPosition.transform.position.x < 60 && ballPosition.transform.position.y > 5) // right
                 {
               
                     transform.position = new Vector3(ballPosition.transform.position.x, transform.position.y, transform.position.z);
