@@ -5,15 +5,15 @@ using UnityEngine;
 public class GoalKeeperMover : MonoBehaviour
 {
 
-    BallPosition ballPosition;
-    public GameObject goalKeeper;
+    BallPosition ball; //Eriþilmek istenen nesne
+    public GameObject ballPosition; 
 
     
     
 
     private void Awake()
     {
-        ballPosition = goalKeeper.GetComponent<BallPosition>();
+        ball = ballPosition.GetComponent<BallPosition>();
 
     }
 
@@ -21,8 +21,11 @@ public class GoalKeeperMover : MonoBehaviour
     {
 
 
-
-        transform.position = new Vector3(ballPosition.transform.position.x, transform.position.y, transform.position.z);
+        if(ball.transform.position.x > 41 && ball.transform.position.x < 58)
+        {
+            transform.position = new Vector3(ball.transform.position.x, transform.position.y, transform.position.z);
+        }
+        
 
     }
 }
