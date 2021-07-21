@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class GoalKeeperMover : MonoBehaviour
 {
-    public new GameObject gameObject;
+
+    BallPosition ballPosition;
+    public GameObject goalKeeper;
 
     
     
 
     private void Awake()
     {
-        gameObject = GetComponent<GameObject>();
+        ballPosition = goalKeeper.GetComponent<BallPosition>();
 
     }
 
@@ -20,7 +22,7 @@ public class GoalKeeperMover : MonoBehaviour
 
 
 
-        transform.position = new Vector3(gameObject.transform.position.x, transform.position.y, transform.position.z);
+        transform.position = new Vector3(ballPosition.transform.position.x, transform.position.y, transform.position.z);
 
     }
 }
