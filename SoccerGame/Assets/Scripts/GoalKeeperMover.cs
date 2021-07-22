@@ -56,7 +56,8 @@ public class GoalKeeperMover : MonoBehaviour
 
                 else if (ballPosition.transform.position.x > 45 && ballPosition.transform.position.x < 55)
                 {
-                    transform.position = new Vector3(ballPosition.transform.position.x, transform.position.y, transform.position.z);
+                    transform.position = new Vector3(ballPosition.transform.position.x, transform.position.y, transform.position.z); //translate
+
                 }
                 
                 else if(ballPosition.transform.position.x >= 55 && ballPosition.transform.position.x < 60 && ballPosition.transform.position.y > 5 && transform.position.x <= ballPosition.transform.position.x && transform.position.x > 40 && transform.position.x < 60) // right
