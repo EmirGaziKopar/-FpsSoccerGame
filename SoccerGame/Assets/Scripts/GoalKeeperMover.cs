@@ -49,7 +49,7 @@ public class GoalKeeperMover : MonoBehaviour
                 {
                     
                     transform.position = new Vector3(ballPosition.transform.position.x, transform.position.y, transform.position.z);
-                    transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, +70), .1f);
+                    transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, +80), .1f);
                 
                 }
 
@@ -62,13 +62,15 @@ public class GoalKeeperMover : MonoBehaviour
                 {
               
                     transform.position = new Vector3(ballPosition.transform.position.x, transform.position.y, transform.position.z);
-                    transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, -70), .1f);
+                    transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, -80), .1f);
                
                 }
                 else if (ballPosition.transform.position.x > 40 && ballPosition.transform.position.x < 60 && ballPosition.transform.position.y <= 5)
                 {
                 transform.position = new Vector3(ballPosition.transform.position.x, transform.position.y, transform.position.z);
                 }
+
+
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, 0), .1f);
                 
         }

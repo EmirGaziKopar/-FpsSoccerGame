@@ -14,7 +14,7 @@ public class CharacterPower : MonoBehaviour
     public void shoot()
     {
         rigidbody = top.GetComponent<Rigidbody>();
-        Vector3 a = new Vector3(this.transform.forward.x, Random.Range(0.1f, 0.3f), this.transform.forward.z); //Topun karþýya gitmesini saðlayan z.
+        Vector3 a = new Vector3(this.transform.forward.x, Random.Range(0.2f, 0.28f), this.transform.forward.z); //Topun karþýya gitmesini saðlayan z.
         rigidbody.velocity = a * power;
     }
 
