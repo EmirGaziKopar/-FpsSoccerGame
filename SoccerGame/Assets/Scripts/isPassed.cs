@@ -6,6 +6,7 @@ public class isPassed : MonoBehaviour
 {
     public bool isAccess;
 
+    [SerializeField] GoalKeeperEnum goalKeeperEnum;
    
 
     private void Awake()
@@ -20,22 +21,39 @@ public class isPassed : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-
-        
-        if (other.tag == "Ball")
+        if(goalKeeperEnum == GoalKeeperEnum.Left)
         {
-            isAccess = true;
+            if (other.tag == "Ball")
+            {
+                isAccess = true;
+            }
         }
-        
-        
+        else if (goalKeeperEnum == GoalKeeperEnum.Right)
+        {
+            if (other.tag == "Ball")
+            {
+                isAccess = true;
+            }
+        }
 
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Ball")
+        
+        if (goalKeeperEnum == GoalKeeperEnum.Left)
         {
-            isAccess = false;
+            if (other.tag == "Ball")
+            {
+                isAccess = false;
+            }
+        }
+        else if (goalKeeperEnum == GoalKeeperEnum.Right)
+        {
+            if (other.tag == "Ball")
+            {
+                isAccess = false;
+            }
         }
     }
 
