@@ -20,6 +20,7 @@ public class LookAtTheBall : MonoBehaviour
 
     private void Update()
     {
+
         head.transform.LookAt(ball);
     }
 }

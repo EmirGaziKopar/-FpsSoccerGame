@@ -5,15 +5,15 @@ using UnityEngine;
 public class GoalKeeperMover : MonoBehaviour
 {
 
-    BallPosition ballPosition; 
-    public GameObject ballPointer; 
+    BallPosition ballPosition;
+    public GameObject ballPointer;
     public GameObject isPassedPointer;
     [SerializeField] float speed;
     MidPosition midPosition;
     public GameObject MidPointer;
 
 
-    float x;
+ 
 
     float y;
 
@@ -77,7 +77,7 @@ public class GoalKeeperMover : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, y, z);
                 transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, -80), .1f);
             }
-            else if (ballPosition.transform.position.x > 40 && ballPosition.transform.position.x <= 45 && ballPosition.transform.position.y <= 5 )//left
+            else if (ballPosition.transform.position.x > 40 && ballPosition.transform.position.x <= 45 && ballPosition.transform.position.y <= 5)//left
             {
 
                 transform.position = Vector3.MoveTowards(transform.position, ballPosition.transform.position, Time.deltaTime * speed);
@@ -91,7 +91,7 @@ public class GoalKeeperMover : MonoBehaviour
             }
 
 
-            else if(ballPosition.transform.position.x >= 60 || ballPosition.transform.position.x < 40)
+            else if (ballPosition.transform.position.x >= 60 || ballPosition.transform.position.x < 40)
             {
 
                 transform.position = Vector3.MoveTowards(transform.position, midPosition.transform.position, Time.deltaTime * speed);
@@ -103,7 +103,7 @@ public class GoalKeeperMover : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, 0), .1f);
 
         }
-        
+
 
 
 
