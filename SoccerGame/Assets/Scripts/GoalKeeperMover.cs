@@ -12,25 +12,48 @@ public class GoalKeeperMover : MonoBehaviour
     MidPosition midPosition;
     public GameObject MidPointer;
     [SerializeField] GoalKeeperEnum goalKeeperEnum;
-
- 
-
     float y;
-
     float z;
-
-
-
-
-
-
-
-
     [SerializeField] isPassed isPassed;
 
 
+    void right()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, ballPosition.transform.position, Time.deltaTime * speed);
+        transform.position = new Vector3(transform.position.x, y, z);
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, -80), .1f);
+    }
 
+    void rightGround()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, ballPosition.transform.position, Time.deltaTime * speed);
+        transform.position = new Vector3(transform.position.x, y, z);
+    }
 
+    void left()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, ballPosition.transform.position, Time.deltaTime * speed);
+        transform.position = new Vector3(transform.position.x, y, z);
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, +80), .1f);
+    }
+
+    void leftGround()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, ballPosition.transform.position, Time.deltaTime * speed);
+        transform.position = new Vector3(transform.position.x, y, z);
+    }
+
+    void mid()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, ballPosition.transform.position, Time.deltaTime * speed);
+        transform.position = new Vector3(transform.position.x, y, z);
+    }
+
+    void others()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, midPosition.transform.position, Time.deltaTime * speed);
+        transform.position = new Vector3(transform.position.x, y, z);
+    }
 
     private void Awake()
     {
@@ -41,10 +64,6 @@ public class GoalKeeperMover : MonoBehaviour
         midPosition = MidPointer.GetComponent<MidPosition>();
         z = transform.position.z;
         y = transform.position.y;
-
-
-
-
     }
 
     private void Update()
@@ -61,42 +80,34 @@ public class GoalKeeperMover : MonoBehaviour
 
                 if (ballPosition.transform.position.x > 40 && ballPosition.transform.position.x <= 45 && ballPosition.transform.position.y > 5) //left
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, ballPosition.transform.position, Time.deltaTime * speed);
-                    transform.position = new Vector3(transform.position.x, y, z);
-                    transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, +80), .1f);
+                    left();
                 }
 
                 else if (ballPosition.transform.position.x > 45 && ballPosition.transform.position.x < 55) //Mid
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, ballPosition.transform.position, Time.deltaTime * speed);
-                    transform.position = new Vector3(transform.position.x, y, z);
+                    mid();
                 }
 
                 else if (ballPosition.transform.position.x >= 55 && ballPosition.transform.position.x < 60 && ballPosition.transform.position.y > 5) // right
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, ballPosition.transform.position, Time.deltaTime * speed);
-                    transform.position = new Vector3(transform.position.x, y, z);
-                    transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, -80), .1f);
+                    right();
                 }
-                else if (ballPosition.transform.position.x > 40 && ballPosition.transform.position.x <= 45 && ballPosition.transform.position.y <= 5)//left
+                else if (ballPosition.transform.position.x > 40 && ballPosition.transform.position.x <= 45 && ballPosition.transform.position.y <= 5)//leftGround
                 {
 
-                    transform.position = Vector3.MoveTowards(transform.position, ballPosition.transform.position, Time.deltaTime * speed);
-                    transform.position = new Vector3(transform.position.x, y, z);
+                    leftGround();
 
                 }
-                else if (ballPosition.transform.position.x >= 55 && ballPosition.transform.position.x < 60 && ballPosition.transform.position.y <= 5)//right
+                else if (ballPosition.transform.position.x >= 55 && ballPosition.transform.position.x < 60 && ballPosition.transform.position.y <= 5)//rightGround
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, ballPosition.transform.position, Time.deltaTime * speed);
-                    transform.position = new Vector3(transform.position.x, y, z);
+                    rightGround();
                 }
 
 
-                else if (ballPosition.transform.position.x >= 60 || ballPosition.transform.position.x < 40)
+                else if (ballPosition.transform.position.x >= 60 || ballPosition.transform.position.x < 40)//OtherShoot
                 {
 
-                    transform.position = Vector3.MoveTowards(transform.position, midPosition.transform.position, Time.deltaTime * speed);
-                    transform.position = new Vector3(transform.position.x, y, z);
+                    others();
 
                 }
 
@@ -116,54 +127,37 @@ public class GoalKeeperMover : MonoBehaviour
 
                 if (ballPosition.transform.position.x > 40 && ballPosition.transform.position.x <= 45 && ballPosition.transform.position.y > 5) //left
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, ballPosition.transform.position, Time.deltaTime * speed);
-                    transform.position = new Vector3(transform.position.x, y, z);
-                    transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, +80), .1f);
+                    left();
                 }
 
                 else if (ballPosition.transform.position.x > 45 && ballPosition.transform.position.x < 55) //Mid
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, ballPosition.transform.position, Time.deltaTime * speed);
-                    transform.position = new Vector3(transform.position.x, y, z);
+                    mid();
                 }
 
                 else if (ballPosition.transform.position.x >= 55 && ballPosition.transform.position.x < 60 && ballPosition.transform.position.y > 5) // right
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, ballPosition.transform.position, Time.deltaTime * speed);
-                    transform.position = new Vector3(transform.position.x, y, z);
-                    transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, -80), .1f);
+                    right();
                 }
+
                 else if (ballPosition.transform.position.x > 40 && ballPosition.transform.position.x <= 45 && ballPosition.transform.position.y <= 5)//left
                 {
-
-                    transform.position = Vector3.MoveTowards(transform.position, ballPosition.transform.position, Time.deltaTime * speed);
-                    transform.position = new Vector3(transform.position.x, y, z);
-
+                    leftGround();
                 }
+
                 else if (ballPosition.transform.position.x >= 55 && ballPosition.transform.position.x < 60 && ballPosition.transform.position.y <= 5)//right
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, ballPosition.transform.position, Time.deltaTime * speed);
-                    transform.position = new Vector3(transform.position.x, y, z);
+                    rightGround();
                 }
-
 
                 else if (ballPosition.transform.position.x >= 60 || ballPosition.transform.position.x < 40)
                 {
-
-                    transform.position = Vector3.MoveTowards(transform.position, midPosition.transform.position, Time.deltaTime * speed);
-                    transform.position = new Vector3(transform.position.x, y, z);
-
+                    others();
                 }
-
 
                 transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, 0), .1f);
 
             }
         }
-        
-
-
-
-
     }
 }
