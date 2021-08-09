@@ -16,6 +16,8 @@ using UnityEngine.UI;
 
 public class FirstPersonController : MonoBehaviour
 {
+
+    
     private Rigidbody rb;
 
     #region Camera Movement Variables
@@ -134,9 +136,8 @@ public class FirstPersonController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-
         crosshairObject = GetComponentInChildren<Image>();
-
+      
         // Set internal variables
         playerCamera.fieldOfView = fov;
         originalScale = transform.localScale;
@@ -163,7 +164,7 @@ public class FirstPersonController : MonoBehaviour
         }
         else
         {
-            crosshairObject.gameObject.SetActive(false);
+            crosshairObject.gameObject.SetActive(true);
         }
 
         #region Sprint Bar
@@ -385,8 +386,15 @@ public class FirstPersonController : MonoBehaviour
 
         if (playerCanMove)
         {
+
+
+
             // Calculate how fast we should be moving
-            Vector3 targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+
+           
+
+            
+            Vector3 targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));  
 
             // Checks if player is walking and isGrounded
             // Will allow head bob
@@ -580,7 +588,7 @@ public class FirstPersonController : MonoBehaviour
             EditorGUI.indentLevel++; 
             EditorGUILayout.BeginHorizontal(); 
             EditorGUILayout.PrefixLabel(new GUIContent("Crosshair Image", "Sprite to use as the crosshair.")); 
-            fpc.crosshairImage = (Sprite)EditorGUILayout.ObjectField(fpc.crosshairImage, typeof(Sprite), false);
+            fpc.crosshairImage = (Sprite)EditorGUILayout.ObjectField(fpc.crosshairImage, typeof(Sprite), true);
             EditorGUILayout.EndHorizontal();
 
             EditorGUILayout.BeginHorizontal();
