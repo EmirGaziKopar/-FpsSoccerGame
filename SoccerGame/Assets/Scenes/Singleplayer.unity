@@ -4625,7 +4625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 548faea9a100d9346a2f05df40c49d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 10
   ballPointer: {fileID: 1975455679824263}
   BodyPointer: {fileID: 1272648987}
   power: 50
@@ -6207,7 +6207,7 @@ MonoBehaviour:
   shoot_audio: {fileID: 1797631129}
   dribbling_audio: {fileID: 1797631128}
   power: 50
-  dribblingPower: 40
+  dribblingPower: 20
 --- !u!65 &1797631124
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8102,8 +8102,16 @@ PrefabInstance:
       value: 3.0294266
       objectReference: {fileID: 0}
     - target: {fileID: 4434085878115172035, guid: f21f231b08df65941a6a5bce0f7f9f59, type: 3}
+      propertyPath: m_Size.y
+      value: 2.1250954
+      objectReference: {fileID: 0}
+    - target: {fileID: 4434085878115172035, guid: f21f231b08df65941a6a5bce0f7f9f59, type: 3}
       propertyPath: m_Center.x
       value: -1.0147133
+      objectReference: {fileID: 0}
+    - target: {fileID: 4434085878115172035, guid: f21f231b08df65941a6a5bce0f7f9f59, type: 3}
+      propertyPath: m_Center.y
+      value: 0.012620786
       objectReference: {fileID: 0}
     - target: {fileID: 4434085878115172037, guid: f21f231b08df65941a6a5bce0f7f9f59, type: 3}
       propertyPath: m_Mesh

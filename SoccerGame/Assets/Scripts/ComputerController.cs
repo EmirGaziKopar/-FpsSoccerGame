@@ -64,11 +64,9 @@ public class ComputerController : MonoBehaviour
     {
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, +90, 0), .5f);
     }
-    private void Update()
+
+    private void FixedUpdate()
     {
-
-        
-
         if (ballPosition.transform.position.z > transform.position.z && isOverBackTime == true)
         {
             if (transform.position.x >= 50)
@@ -94,29 +92,45 @@ public class ComputerController : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, ballPosition.transform.position, Time.deltaTime * speed);
             transform.position = new Vector3(transform.position.x, y, transform.position.z);
             body.transform.LookAt(ball);
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+
+
         }
         else
         {
             isOverBackTime = false;
             backTime -= Time.deltaTime;
-            if (backTime < 0) 
+            if (backTime < 0)
             {
                 isOverBackTime = true;
             }
             runBack();
+
+
         }
 
-        
+    }
 
 
-
-
-
-
-
+    private void Update()
+    {
 
         
+
+        
+        transform.position = Vector3.MoveTowards(transform.position, ballPosition.transform.position, Time.deltaTime * speed);
+        transform.position = new Vector3(transform.position.x, y, transform.position.z);
+        body.transform.LookAt(ball);
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+
+
+
+
+
+
+
+
+
 
 
 
