@@ -4625,10 +4625,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 548faea9a100d9346a2f05df40c49d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 8
   ballPointer: {fileID: 1975455679824263}
   BodyPointer: {fileID: 1272648987}
   power: 50
+  dribblingPower: 12
+  opponentPointer: {fileID: 1797631115}
 --- !u!65 &1272648990
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8298,7 +8300,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6267223292104103117, guid: 1234a63eaac26db43aaffbb80821ad34, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 110
+      value: 106.6
       objectReference: {fileID: 0}
     - target: {fileID: 6267223292104103117, guid: 1234a63eaac26db43aaffbb80821ad34, type: 3}
       propertyPath: m_LocalRotation.w

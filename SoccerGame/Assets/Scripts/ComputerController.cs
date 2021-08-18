@@ -14,11 +14,16 @@ public class ComputerController : MonoBehaviour
     bool touch;
     float x;//rotation
     new Rigidbody rigidbody;
-    public float power;
-
+    [SerializeField]float power;
+    [SerializeField] float dribblingPower;
     float backTime=1f;
     float backtime;
     bool isOverBackTime;
+
+    Transform opponentPosition; //Bilgisayarýn rakibin hareketlerine göre hareket etmesi ve türevleri þeyler için kullanýlacak
+    [SerializeField]GameObject opponentPointer;
+
+
 
     private void Awake()
     {
@@ -29,10 +34,17 @@ public class ComputerController : MonoBehaviour
         body = BodyPointer.GetComponent<Transform>();
         x = transform.rotation.x;
         backtime = backTime;
-        
+        opponentPosition = opponentPointer.GetComponent<Transform>();
 
     }
 
+
+    public void dribbling()
+    {
+        rigidbody = ballPointer.GetComponent<Rigidbody>();
+        Vector3 a = new Vector3(this.transform.forward.x, 0f, this.transform.forward.z); //Topun karþýya gitmesini saðlayan z.
+        rigidbody.velocity = a * dribblingPower;
+    }
 
     public void shoot()
     {
@@ -69,26 +81,48 @@ public class ComputerController : MonoBehaviour
     {
         if (ballPosition.transform.position.z > transform.position.z && isOverBackTime == true)
         {
-            if (transform.position.x >= 50)
+            if (transform.position.x >= 50) //Bunlarýn sayýsýný artýrarak bulunduðu konuma göre daha isabetli atýþlar yapan oyuncular çýkarabiliriz
             {
-                onRight();
+                
                 if (touch == true)
                 {
-                    shoot();
-                    Debug.Log("suuut ve gool");
+                    onRight();
+                    if (ballPosition.transform.position.z < 120)
+                    {
+                        dribbling();
+                    }
+                    else
+                    {
+                        shoot();
+                        Debug.Log("suuut ve gool");
+                    }
+                    
 
                 }
             }
             else if (transform.position.x < 50)
             {
-                onLeft();
+
+                
+                
                 if (touch == true)
                 {
-                    shoot();
-                    Debug.Log("suuut ve gool");
+                    onLeft();
+                    if (ballPosition.transform.position.z < 120)
+                    {
+                        dribbling();
+                    }
+                    else
+                    {
+                        shoot();
+                        Debug.Log("suuut ve gool");
+                    }
+                    
+                    
 
                 }
             }
+
             transform.position = Vector3.MoveTowards(transform.position, ballPosition.transform.position, Time.deltaTime * speed);
             transform.position = new Vector3(transform.position.x, y, transform.position.z);
             body.transform.LookAt(ball);
@@ -104,6 +138,7 @@ public class ComputerController : MonoBehaviour
             {
                 isOverBackTime = true;
             }
+            turn();
             runBack();
 
 
