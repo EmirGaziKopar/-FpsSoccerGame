@@ -20,6 +20,9 @@ public class ComputerController : MonoBehaviour
     float backtime;
     bool isOverBackTime;
 
+    float forwardRate;
+    float backwardRate;
+
     Transform opponentPosition; //Bilgisayarýn rakibin hareketlerine göre hareket etmesi ve türevleri þeyler için kullanýlacak
     [SerializeField]GameObject opponentPointer;
 
@@ -70,15 +73,17 @@ public class ComputerController : MonoBehaviour
 
     void onRight()
     {
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, -90 , 0), .5f);
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, -20 , 0), .5f);
     }
     void onLeft()
     {
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, +90, 0), .5f);
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, +20, 0), .5f);
     }
 
     private void FixedUpdate()
     {
+
+        Debug.Log(transform.rotation.y);
         if (ballPosition.transform.position.z > transform.position.z && isOverBackTime == true)
         {
             if (transform.position.x >= 50) //Bunlarýn sayýsýný artýrarak bulunduðu konuma göre daha isabetli atýþlar yapan oyuncular çýkarabiliriz
@@ -150,9 +155,12 @@ public class ComputerController : MonoBehaviour
     private void Update()
     {
 
-        
+        backwardRate = 1 / (0 + transform.position.y);//geri bakarken 1'e yaklaþýyoruz
+        forwardRate = 1 / (1 - transform.position.y);//ileri bakarken 0'a yaklaþýyoruz
 
-        
+
+
+
         transform.position = Vector3.MoveTowards(transform.position, ballPosition.transform.position, Time.deltaTime * speed);
         transform.position = new Vector3(transform.position.x, y, transform.position.z);
         body.transform.LookAt(ball);
@@ -173,6 +181,11 @@ public class ComputerController : MonoBehaviour
 
     }
 
+
+
+    
+
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Ball")
@@ -188,6 +201,14 @@ public class ComputerController : MonoBehaviour
             touch = false;
         }
     }
+
+    
+
+    
+
+
+    
+    
 
 
 }
