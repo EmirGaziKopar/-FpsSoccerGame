@@ -6,15 +6,24 @@ public class GoalKeeperMover : MonoBehaviour
 {
 
     BallPosition ballPosition;
-    public GameObject ballPointer;
+    Transform ballPosition2;
+    [SerializeField] GameObject ballPointer;
     public GameObject isPassedPointer;
     [SerializeField] float speed;
     MidPosition midPosition;
     public GameObject MidPointer;
+    new Rigidbody rigidbody;
     [SerializeField] GoalKeeperEnum goalKeeperEnum;
     float y;
     float z;
     [SerializeField] isPassed isPassed;
+    private bool touch;
+
+    [Range(1,3)]
+    [SerializeField] float shootHeight;
+
+
+    [SerializeField] float degajPower;
 
 
     void right()
@@ -58,12 +67,15 @@ public class GoalKeeperMover : MonoBehaviour
     private void Awake()
     {
         ballPosition = ballPointer.GetComponent<BallPosition>();
+        ballPosition2 = ballPointer.GetComponent<Transform>();
 
         isPassed = isPassedPointer.GetComponent<isPassed>();
 
         midPosition = MidPointer.GetComponent<MidPosition>();
         z = transform.position.z;
         y = transform.position.y;
+
+        touch = false;
     }
 
     private void Update()
@@ -77,6 +89,10 @@ public class GoalKeeperMover : MonoBehaviour
                 transform.position = Vector3.MoveTowards(transform.position, ballPosition.transform.position, Time.deltaTime * speed);
                 transform.position = new Vector3(transform.position.x, y, z);
                 */
+                if (touch == true)
+                {
+                    degaj();
+                }
 
                 if (ballPosition.transform.position.x > 40 && ballPosition.transform.position.x <= 45 && ballPosition.transform.position.y > 5) //left
                 {
@@ -124,6 +140,10 @@ public class GoalKeeperMover : MonoBehaviour
                 transform.position = Vector3.MoveTowards(transform.position, ballPosition.transform.position, Time.deltaTime * speed);
                 transform.position = new Vector3(transform.position.x, y, z);
                 */
+                if (touch == true)
+                {
+                    degaj();
+                }
 
                 if (ballPosition.transform.position.x > 40 && ballPosition.transform.position.x <= 45 && ballPosition.transform.position.y > 5) //left
                 {
@@ -154,10 +174,53 @@ public class GoalKeeperMover : MonoBehaviour
                 {
                     others();
                 }
+                
 
                 transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, 0), .1f);
 
             }
         }
     }
+    public void degaj()
+    {
+        if(goalKeeperEnum == GoalKeeperEnum.Right)
+        {
+            rigidbody = ballPointer.GetComponent<Rigidbody>();
+            Vector3 a = new Vector3(-this.transform.forward.x, shootHeight, -this.transform.forward.z);
+            rigidbody.velocity = a * degajPower;
+            Debug.Log("Buraya girildi degaj-Right");
+        }
+        else if(goalKeeperEnum == GoalKeeperEnum.Left)
+        {
+            rigidbody = ballPointer.GetComponent<Rigidbody>();
+            Vector3 a = new Vector3(this.transform.forward.x, shootHeight, this.transform.forward.z);
+            rigidbody.velocity = a * degajPower;
+            Debug.Log("Buraya girildi degaj-Left");
+        }
+        
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Ball")
+        {
+
+            ballPointer = other.gameObject; //Buraya giren gameobject'i tespit etmemize yardýmcý oluyor
+            touch = true;
+            
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Ball")
+        {
+
+            ballPointer = other.gameObject; //Buraya giren gameobject'i tespit etmemize yardýmcý oluyor
+            Debug.Log("Collider içersinde çýkýldý");
+            touch = false;
+            
+        }
+    }
+
+
 }

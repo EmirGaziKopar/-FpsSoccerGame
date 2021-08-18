@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - AccessControl
   - Computer
+  - GoalKeeper
   layers:
   - Default
   - TransparentFX
