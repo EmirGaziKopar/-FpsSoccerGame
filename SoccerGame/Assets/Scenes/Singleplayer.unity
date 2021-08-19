@@ -5185,11 +5185,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 548faea9a100d9346a2f05df40c49d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
   ballPointer: {fileID: 1975455679824263}
   BodyPointer: {fileID: 1272648987}
-  power: 50
-  dribblingPower: 8
   opponentPointer: {fileID: 1797631115}
   difficulty: 0
 --- !u!65 &1272648990
@@ -9059,6 +9056,10 @@ PrefabInstance:
     - target: {fileID: 707628609236269727, guid: 7a79ae3c8a5bcb445889325cba70ba1b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1033779547929818327, guid: 7a79ae3c8a5bcb445889325cba70ba1b, type: 3}
+      propertyPath: difficulty
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1033779547929818327, guid: 7a79ae3c8a5bcb445889325cba70ba1b, type: 3}
       propertyPath: ballPointer

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ComputerController : MonoBehaviour
 {
     BallPosition ballPosition;
-    [SerializeField] float speed;
+    float speed;
     [SerializeField]GameObject ballPointer;
     public GameObject BodyPointer;
     Transform ball;
@@ -14,8 +14,8 @@ public class ComputerController : MonoBehaviour
     bool touch;
     float x;//rotation
     new Rigidbody rigidbody;
-    [SerializeField]float power;
-    [SerializeField] float dribblingPower;
+    float power;
+    float dribblingPower;
     float backTime=1f;
     float backtime;
     bool isOverBackTime;
@@ -40,6 +40,37 @@ public class ComputerController : MonoBehaviour
 
     private void Awake()
     {
+        
+        if(difficulty == Difficulty.Low)
+        {
+            power = 35f;
+            speed = 3f;
+            dribblingPower = 10f;
+
+        }
+        else if(difficulty == Difficulty.Medium)
+        {
+            power = 50f;
+            speed = 4.6f;
+            dribblingPower = 14f;
+        }
+        else if(difficulty == Difficulty.High)
+        {
+            power = 45f;
+            speed = 5f;
+        }
+        else if(difficulty == Difficulty.VeryHigh)
+        {
+            power = 55f;
+            speed = 6f;
+            dribblingPower = 18f;
+        }
+        else if(difficulty == Difficulty.highestLevel)
+        {
+            power = 65f;
+            speed = 7f;
+
+        }
         isOverBackTime = true;
         y=transform.position.y;
         ballPosition = ballPointer.GetComponent<BallPosition>();
@@ -56,7 +87,7 @@ public class ComputerController : MonoBehaviour
     {
         if (difficulty == Difficulty.Low)
         {
-            if(transform.position.x >= 50)
+           /* if(transform.position.x >= 50)
             {
                 float angleOfRate = 20f;
                 onRight(angleOfRate);
@@ -72,18 +103,19 @@ public class ComputerController : MonoBehaviour
                 Vector3 a = new Vector3(this.transform.forward.x, 0f, this.transform.forward.z); //Topun karþýya gitmesini saðlayan z.
                 rigidbody.velocity = a * dribblingPower;
             }
-                /*
-            if (transform.position.x >= 50 || transform.position.x <= 60)
+           */
+                
+            if (transform.position.x >= 50 && transform.position.x <= 60)
             {
-                float angleOfRate = 16f;
+                float angleOfRate = 12f;
                 onRight(angleOfRate);
                 rigidbody = ballPointer.GetComponent<Rigidbody>();
                 Vector3 a = new Vector3(this.transform.forward.x, 0f, this.transform.forward.z); //Topun karþýya gitmesini saðlayan z.
                 rigidbody.velocity = a * dribblingPower;
             }
-            else if(transform.position.x < 50 || transform.position.x >= 40)
+            else if(transform.position.x < 50 && transform.position.x >= 40)
             {
-                float angleOfRate = 16f;
+                float angleOfRate = 12f;
                 onLeft(angleOfRate);
                 rigidbody = ballPointer.GetComponent<Rigidbody>();
                 Vector3 a = new Vector3(this.transform.forward.x, 0f, this.transform.forward.z); //Topun karþýya gitmesini saðlayan z.
@@ -91,7 +123,7 @@ public class ComputerController : MonoBehaviour
             }
             else if (transform.position.x > 60)
             {
-                float angleOfRate = -60f;
+                float angleOfRate = 25f;
                 onRight(angleOfRate);
                 rigidbody = ballPointer.GetComponent<Rigidbody>();
                 Vector3 a = new Vector3(this.transform.forward.x, 0f, this.transform.forward.z); //Topun karþýya gitmesini saðlayan z.
@@ -99,14 +131,49 @@ public class ComputerController : MonoBehaviour
             }
             else if (transform.position.x < 40)
             {
-                float angleOfRate = -60f;
+                float angleOfRate = 25f;
                 onLeft(angleOfRate);
                 rigidbody = ballPointer.GetComponent<Rigidbody>();
                 Vector3 a = new Vector3(this.transform.forward.x, 0f, this.transform.forward.z); //Topun karþýya gitmesini saðlayan z.
                 rigidbody.velocity = a * dribblingPower;
             }
-                */
+                
 
+        }
+        else if(difficulty == Difficulty.Medium)
+        {
+            if (transform.position.x >= 50 && transform.position.x <= 60)
+            {
+                float angleOfRate = 12f;
+                onRight(angleOfRate);
+                rigidbody = ballPointer.GetComponent<Rigidbody>();
+                Vector3 a = new Vector3(this.transform.forward.x, 0f, this.transform.forward.z); //Topun karþýya gitmesini saðlayan z.
+                rigidbody.velocity = a * dribblingPower;
+            }
+            else if (transform.position.x < 50 && transform.position.x >= 40)
+            {
+                float angleOfRate = 12f;
+                onLeft(angleOfRate);
+                rigidbody = ballPointer.GetComponent<Rigidbody>();
+                Vector3 a = new Vector3(this.transform.forward.x, 0f, this.transform.forward.z); //Topun karþýya gitmesini saðlayan z.
+                rigidbody.velocity = a * dribblingPower;
+            }
+            else if (transform.position.x > 60)
+            {
+                float angleOfRate = 25f;
+                onRight(angleOfRate);
+                rigidbody = ballPointer.GetComponent<Rigidbody>();
+                Vector3 a = new Vector3(this.transform.forward.x, 0f, this.transform.forward.z); //Topun karþýya gitmesini saðlayan z.
+                rigidbody.velocity = a * dribblingPower;
+            }
+            else if (transform.position.x < 40)
+            {
+                float angleOfRate = 25f;
+                onLeft(angleOfRate);
+                rigidbody = ballPointer.GetComponent<Rigidbody>();
+                Vector3 a = new Vector3(this.transform.forward.x, 0f, this.transform.forward.z); //Topun karþýya gitmesini saðlayan z.
+                rigidbody.velocity = a * dribblingPower;
+            }
         }
         
     }
@@ -148,6 +215,58 @@ public class ComputerController : MonoBehaviour
                 rigidbody.velocity = a * power;
             }
         }
+
+        else if(difficulty == Difficulty.Medium)
+        {
+            if (transform.position.x >= 50 && transform.position.x <= 60)
+            {
+                float angleOfRate = 15f;
+                onRight(angleOfRate);
+                rigidbody = ballPointer.GetComponent<Rigidbody>();
+                Vector3 a = new Vector3(this.transform.forward.x, Random.Range(0.22f, 0.23f), this.transform.forward.z); //Topun karþýya gitmesini saðlayan z.
+                rigidbody.velocity = a * power;
+            }
+            else if (transform.position.x < 50 && transform.position.x >= 40)
+            {
+                float angleOfRate = 15f;
+                onLeft(angleOfRate);
+                rigidbody = ballPointer.GetComponent<Rigidbody>();
+                Vector3 a = new Vector3(this.transform.forward.x, Random.Range(0.22f, 0.23f), this.transform.forward.z); //Topun karþýya gitmesini saðlayan z.
+                rigidbody.velocity = a * power;
+            }
+            else if(transform.position.x>60 && transform.position.x <= 70)
+            {
+                float angleOfRate = 35f;
+                onRight(angleOfRate);
+                rigidbody = ballPointer.GetComponent<Rigidbody>();
+                Vector3 a = new Vector3(this.transform.forward.x, Random.Range(0.22f, 0.23f), this.transform.forward.z); //Topun karþýya gitmesini saðlayan z.
+                rigidbody.velocity = a * power;
+            }
+            else if(transform.position.x<40 && transform.position.x >= 30)
+            {
+                float angleOfRate = 35f;
+                onLeft(angleOfRate);
+                rigidbody = ballPointer.GetComponent<Rigidbody>();
+                Vector3 a = new Vector3(this.transform.forward.x, Random.Range(0.22f, 0.23f), this.transform.forward.z); //Topun karþýya gitmesini saðlayan z.
+                rigidbody.velocity = a * power;
+            }
+            else if (transform.position.x > 70)
+            {
+                float angleOfRate = 55f;
+                onRight(angleOfRate);
+                rigidbody = ballPointer.GetComponent<Rigidbody>();
+                Vector3 a = new Vector3(this.transform.forward.x, Random.Range(0.22f, 0.23f), this.transform.forward.z); //Topun karþýya gitmesini saðlayan z.
+                rigidbody.velocity = a * power;
+            }
+            else if (transform.position.x < 30)
+            {
+                float angleOfRate = 55f;
+                onLeft(angleOfRate);
+                rigidbody = ballPointer.GetComponent<Rigidbody>();
+                Vector3 a = new Vector3(this.transform.forward.x, Random.Range(0.22f, 0.23f), this.transform.forward.z); //Topun karþýya gitmesini saðlayan z.
+                rigidbody.velocity = a * power;
+            }
+        }
         
         
 
@@ -184,115 +303,44 @@ public class ComputerController : MonoBehaviour
     {
 
         Debug.Log(transform.rotation.y);
-        if (difficulty == Difficulty.Low)
+        if (ballPosition.transform.position.z + 5 > transform.position.z && isOverBackTime == true)
         {
-            if (ballPosition.transform.position.z+5 > transform.position.z && isOverBackTime == true)
+            if (touch == true)
             {
-                if (touch == true)
+
+                if (ballPosition.transform.position.z < Random.Range(120,140))
                 {
-
-                    if (ballPosition.transform.position.z < 120)
-                    {
-                        dribbling();
-                    }
-                    else
-                    {
-                        shoot();
-                        Debug.Log("suuut ve gool");
-                    }
-
-
+                    dribbling();
                 }
-                
-
-                transform.position = Vector3.MoveTowards(transform.position, ballPosition.transform.position, Time.deltaTime * speed);
-                transform.position = new Vector3(transform.position.x, y, transform.position.z);
-                body.transform.LookAt(ball);
-                transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+                else
+                {
+                    shoot();
+                    Debug.Log("suuut ve gool");
+                }
 
 
             }
-            else
-            {
-                isOverBackTime = false;
-                backTime -= Time.deltaTime;
-                if (backTime < 0)
-                {
-                    isOverBackTime = true;
-                }
-                turn();
-                runBack();
 
 
-            }
+            transform.position = Vector3.MoveTowards(transform.position, ballPosition.transform.position, Time.deltaTime * speed);
+            transform.position = new Vector3(transform.position.x, y, transform.position.z);
+            body.transform.LookAt(ball);
+            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+
+
         }
-        else if (difficulty == Difficulty.Medium)
+        else
         {
-            if (ballPosition.transform.position.z + 5 > transform.position.z && isOverBackTime == true)
+            isOverBackTime = false;
+            backTime -= Time.deltaTime;
+            if (backTime < 0)
             {
-                if (transform.position.x >= 50) //Bunlarýn sayýsýný artýrarak bulunduðu konuma göre daha isabetli atýþlar yapan oyuncular çýkarabiliriz
-                {
-
-                    if (touch == true)
-                    {
-                        onRight(20);
-                        if (ballPosition.transform.position.z < 120)
-                        {
-                            dribbling();
-                        }
-                        else
-                        {
-                            shoot();
-                            Debug.Log("suuut ve gool");
-                        }
-
-
-                    }
-                }
-                
-                else if (transform.position.x < 50)
-                {
-
-
-
-                    if (touch == true)
-                    {
-                        onLeft(20);
-                        if (ballPosition.transform.position.z < 120)
-                        {
-                            dribbling();
-                        }
-                        else
-                        {
-                            shoot();
-                            Debug.Log("suuut ve gool");
-                        }
-
-
-
-                    }
-                }
-
-                transform.position = Vector3.MoveTowards(transform.position, ballPosition.transform.position, Time.deltaTime * speed);
-                transform.position = new Vector3(transform.position.x, y, transform.position.z);
-                body.transform.LookAt(ball);
-                transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
-
-
+                isOverBackTime = true;
             }
-            else
-            {
-                isOverBackTime = false;
-                backTime -= Time.deltaTime;
-                if (backTime < 0)
-                {
-                    isOverBackTime = true;
-                }
-                turn();
-                runBack();
+            turn();
+            runBack();
 
 
-            }
         }
 
 
@@ -301,23 +349,16 @@ public class ComputerController : MonoBehaviour
 
     private void Update()
     {
-
-        if(difficulty == Difficulty.Low)
-        {
-            backwardRate = 1 / (0 + transform.position.y);//geri bakarken 1'e yaklaþýyoruz
-            forwardRate = 1 / (1 - transform.position.y);//ileri bakarken 0'a yaklaþýyoruz
+        backwardRate = 1 / (0 + transform.position.y);//geri bakarken 1'e yaklaþýyoruz
+        forwardRate = 1 / (1 - transform.position.y);//ileri bakarken 0'a yaklaþýyoruz
 
 
+        transform.position = Vector3.MoveTowards(transform.position, ballPosition.transform.position, Time.deltaTime * speed);
+        transform.position = new Vector3(transform.position.x, y, transform.position.z);
+        body.transform.LookAt(ball);
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
 
 
-            transform.position = Vector3.MoveTowards(transform.position, ballPosition.transform.position, Time.deltaTime * speed);
-            transform.position = new Vector3(transform.position.x, y, transform.position.z);
-            body.transform.LookAt(ball);
-            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
-        }
-
-
-        
 
     }
 
