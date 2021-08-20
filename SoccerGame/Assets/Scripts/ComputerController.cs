@@ -308,7 +308,7 @@ public class ComputerController : MonoBehaviour
             if (touch == true)
             {
 
-                if (ballPosition.transform.position.z < Random.Range(120,140))
+                if (ballPosition.transform.position.z < Random.Range(120,170))
                 {
                     dribbling();
                 }
