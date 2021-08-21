@@ -12,7 +12,12 @@ public class CharacterPower : MonoBehaviour
     [SerializeField] float dribblingPower = 10f;
     bool touch;
 
+    public static bool isTouchBall;
+    
 
+
+
+  
     public void shoot()
     {
         rigidbody = top.GetComponent<Rigidbody>();
@@ -33,13 +38,16 @@ public class CharacterPower : MonoBehaviour
     {
         if(touch==true && Input.GetMouseButtonUp(0))
         {
+            isTouchBall = true;
             shoot();
+            
             Debug.Log("suuut ve gool");
             
         }
 
         else if (touch == true && Input.GetMouseButtonUp(1))
         {
+            isTouchBall = true;
             dribbling();
             Debug.Log("O ne sürmek öyle");
         }

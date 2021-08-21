@@ -2230,7 +2230,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5bd9b9509c4a2954da5b62880f177b1c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3bc0c2e9654330d42bba7aeba99395fc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3630,6 +3630,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1f4be975b0c4e845a149a453582be5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &880505261 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3372526350529143827, guid: 7a79ae3c8a5bcb445889325cba70ba1b, type: 3}
+  m_PrefabInstance: {fileID: 3372526348716141866}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &903892366
 GameObject:
   m_ObjectHideFlags: 0
@@ -5023,6 +5028,51 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 100, y: 142.25632, z: 118.93143}
   m_Center: {x: 50, y: 5.8718414, z: -29.465714}
+--- !u!1 &1249741609
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1249741611}
+  - component: {fileID: 1249741610}
+  m_Layer: 0
+  m_Name: Boss Selecter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1249741610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249741609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42a0c75847b102249ac1e3bde5bdd58b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fabre: {fileID: 880505259}
+  "\xF6ld\xFCrfabre": {fileID: 880505259}
+--- !u!4 &1249741611
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249741609}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 347.5, y: 212.775, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1252085006
 GameObject:
   m_ObjectHideFlags: 0
@@ -5160,6 +5210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballPointer: {fileID: 1975455679824263}
   BodyPointer: {fileID: 1272648987}
+  anim: {fileID: 0}
   opponentPointer: {fileID: 1797631115}
   difficulty: 0
 --- !u!65 &1272648990
@@ -9075,8 +9126,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1033779547929818327, guid: 7a79ae3c8a5bcb445889325cba70ba1b, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 880505261}
+    - target: {fileID: 1033779547929818327, guid: 7a79ae3c8a5bcb445889325cba70ba1b, type: 3}
       propertyPath: difficulty
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1033779547929818327, guid: 7a79ae3c8a5bcb445889325cba70ba1b, type: 3}
       propertyPath: ballPointer

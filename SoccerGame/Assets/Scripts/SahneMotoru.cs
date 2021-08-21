@@ -5,9 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class SahneMotoru : MonoBehaviour
 {
-    public void goSingle()
+
+    public void goRoy()
     {
 
+        PlayerPrefs.SetInt("boss", 0);
+        SceneManager.LoadScene("Singleplayer");
+
+
+    }
+
+
+    public void goSingle()
+    {
+        PlayerPrefs.DeleteKey("boss");
         SceneManager.LoadScene("Singleplayer");
 
     }
@@ -28,4 +39,16 @@ public class SahneMotoru : MonoBehaviour
 
 
     }
+    
+    public void goStory()
+    {
+
+
+        SceneManager.LoadScene("StoryMode");
+    }
+
+
+
+
+
 }
