@@ -6,22 +6,50 @@ public class BossSelect : MonoBehaviour
 {
 
 
-    public GameObject fabre,öldürfabre;
+    public GameObject fabre, destroyFabre;
+    public GameObject roy, destroyRoy;
+    public GameObject leon, destroyLeon;
+    public GameObject taraftar1, taraftar2, taraftar3;
     // Start is called before the first frame update
     void Start()
     {
 
 
 
-        
-        if (PlayerPrefs.GetInt("boss") == 0)
+
+        if (PlayerPrefs.GetInt("boss") == 1)
         {
             Instantiate(fabre);
-            
-            Debug.Log(" bu kod çalýþýyor");
-            Destroy(öldürfabre);
+            Instantiate(taraftar1);
+            Instantiate(taraftar2);
+            Debug.Log(" fabre üretildi");
+            Destroy(destroyFabre);
 
         }
+
+        if (PlayerPrefs.GetInt("boss") == 0)
+        {
+            Instantiate(roy);
+            Instantiate(taraftar1);
+            Debug.Log(" roy üretildi");
+            Destroy(destroyRoy);
+
+        }
+
+
+        if (PlayerPrefs.GetInt("boss") == 2)
+        {
+            Instantiate(leon);
+            Instantiate(taraftar1);
+            Instantiate(taraftar2);
+            Instantiate(taraftar3);
+            Debug.Log(" leon üretildi");
+            Destroy(destroyLeon);
+
+        }
+
+
+
 
 
 
@@ -31,6 +59,6 @@ public class BossSelect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

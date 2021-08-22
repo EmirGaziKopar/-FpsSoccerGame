@@ -5,7 +5,33 @@ using UnityEngine.SceneManagement;
 
 public class SahneMotoru : MonoBehaviour
 {
+    
+    public GameObject warningText;
+    public void goPrize()
+    {
+        if (PlayerPrefs.GetInt("boss") == 3)
+        {
+            SceneManager.LoadScene("Credits");
 
+
+
+        }
+        else
+        {
+           
+
+
+                warningText.SetActive(true);
+            Invoke("warningTextClose", 3);
+
+
+
+
+        }
+
+
+
+    }
     public void goRoy()
     {
 
@@ -14,6 +40,49 @@ public class SahneMotoru : MonoBehaviour
 
 
     }
+
+    public void goFabre()
+    {
+
+        if (PlayerPrefs.GetInt("boss") == 1)
+        {
+            SceneManager.LoadScene("Singleplayer");
+
+
+        }
+        else
+        {
+
+
+            warningText.SetActive(true);
+            Invoke("warningTextClose", 3);
+        }
+
+
+
+    }
+
+
+
+    public void goLeon()
+    {
+
+        if (PlayerPrefs.GetInt("boss") == 2)
+        {
+            SceneManager.LoadScene("Singleplayer");
+
+
+        }
+        else
+        {
+
+
+            warningText.SetActive(true);
+            Invoke("warningTextClose", 3);
+        }
+
+    }
+
 
 
     public void goSingle()
@@ -29,7 +98,7 @@ public class SahneMotoru : MonoBehaviour
         Application.Quit();
 
 
-       
+
     }
     public void goMenu()
     {
@@ -39,7 +108,7 @@ public class SahneMotoru : MonoBehaviour
 
 
     }
-    
+
     public void goStory()
     {
 
@@ -48,7 +117,13 @@ public class SahneMotoru : MonoBehaviour
     }
 
 
+    public void warningTextClose()
+    {
 
+
+
+        warningText.SetActive(false);
+    }
 
 
 }

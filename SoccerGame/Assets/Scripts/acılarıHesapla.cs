@@ -30,19 +30,10 @@ public class acılarıHesapla : MonoBehaviour
     {
 
 
-        
-
-        backwardRate = -1 / (0 + transform.position.y); //geri bakarken 1'e yaklaşıyoruz
-
-        forwardRate = 1 / (1 - transform.position.y); //ileri bakarken 0'a yaklaşıyoruz
+        Debug.Log(transform.rotation.y);
 
 
-
-        
-
-
-        horizontal = 0.01f / (0.7071068f - transform.rotation.y);
-
+       
 
         
 
@@ -57,7 +48,7 @@ public class acılarıHesapla : MonoBehaviour
 
 
 
-        Debug.Log("Sag:" + right);
+        
     }
         
 

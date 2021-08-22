@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class CharacterPower : MonoBehaviour
 {
+
+
+    int sayac = 0;
+    int sayac1 = 0;
+
     new Rigidbody rigidbody;
     public AudioSource shoot_audio;
     public AudioSource dribbling_audio;
@@ -12,9 +17,17 @@ public class CharacterPower : MonoBehaviour
     [SerializeField] float dribblingPower = 10f;
     bool touch;
 
+    public static bool isTouchBall;
+    
 
+
+
+  
     public void shoot()
     {
+        sayac++;
+        PlayerPrefs.SetInt("shootValueChar", sayac);
+        PlayerPrefs.Save();
         rigidbody = top.GetComponent<Rigidbody>();
         Vector3 a = new Vector3(this.transform.forward.x, Random.Range(0.2f, 0.28f), this.transform.forward.z); //Topun karþýya gitmesini saðlayan z.
         rigidbody.velocity = a * power;
@@ -23,6 +36,11 @@ public class CharacterPower : MonoBehaviour
 
     public void dribbling()
     {
+
+        sayac1++;
+
+        PlayerPrefs.SetInt("dripplingValueChar", sayac1);
+        PlayerPrefs.Save();
         rigidbody = top.GetComponent<Rigidbody>();
         Vector3 a = new Vector3(this.transform.forward.x, 0f, this.transform.forward.z); //Topun karþýya gitmesini saðlayan z.
         rigidbody.velocity = a * dribblingPower;
@@ -33,13 +51,16 @@ public class CharacterPower : MonoBehaviour
     {
         if(touch==true && Input.GetMouseButtonUp(0))
         {
+            isTouchBall = true;
             shoot();
+            
             Debug.Log("suuut ve gool");
             
         }
 
         else if (touch == true && Input.GetMouseButtonUp(1))
         {
+            isTouchBall = true;
             dribbling();
             Debug.Log("O ne sürmek öyle");
         }
