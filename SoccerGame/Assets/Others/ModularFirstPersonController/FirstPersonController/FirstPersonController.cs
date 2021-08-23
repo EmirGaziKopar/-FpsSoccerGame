@@ -137,6 +137,8 @@ public class FirstPersonController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         crosshairObject = GetComponentInChildren<Image>();
+        
+        
       
         // Set internal variables
         playerCamera.fieldOfView = fov;

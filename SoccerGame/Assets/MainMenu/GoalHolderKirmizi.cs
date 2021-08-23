@@ -14,6 +14,7 @@ public class GoalHolderKirmizi : MonoBehaviour
             BallPosition.isGoal = true;
             kýrmýzýtakýmgol++;
         crowd_audio.Play();
+            CrowdAnimation.goalControl = true;
         }
         
 

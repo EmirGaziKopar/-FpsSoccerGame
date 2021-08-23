@@ -20,31 +20,41 @@ public class BossSelect : MonoBehaviour
         if (PlayerPrefs.GetInt("boss") == 1)
         {
             Instantiate(fabre);
+            fabre.gameObject.SetActive(true);
             Instantiate(taraftar1);
+            taraftar1.gameObject.SetActive(true);
             Instantiate(taraftar2);
+            taraftar2.gameObject.SetActive(true);
+
             Debug.Log(" fabre üretildi");
-            Destroy(destroyFabre);
+            
+
 
         }
-
-        if (PlayerPrefs.GetInt("boss") == 0)
+        else if (PlayerPrefs.GetInt("boss") == 0)
         {
             Instantiate(roy);
             Instantiate(taraftar1);
+            roy.gameObject.SetActive(true);
+            taraftar1.gameObject.SetActive(true);
             Debug.Log(" roy üretildi");
-            Destroy(destroyRoy);
+            
 
         }
-
-
         if (PlayerPrefs.GetInt("boss") == 2)
-        {
+        {   
+            
+            
             Instantiate(leon);
+            leon.gameObject.SetActive(true);
             Instantiate(taraftar1);
+            taraftar1.gameObject.SetActive(true);
             Instantiate(taraftar2);
+            taraftar2.gameObject.SetActive(true);
             Instantiate(taraftar3);
+            taraftar3.gameObject.SetActive(true);
             Debug.Log(" leon üretildi");
-            Destroy(destroyLeon);
+            
 
         }
 

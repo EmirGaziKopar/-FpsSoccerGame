@@ -15,7 +15,7 @@ public class GoalHolderBlue : MonoBehaviour
             mavitakimgol++;
             isBlueTeamScored = true;
             crowd_audio.Play();
-            
+            CrowdAnimation.goalControl = true;
         }
 
 

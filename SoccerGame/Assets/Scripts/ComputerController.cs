@@ -474,6 +474,7 @@ public class ComputerController : MonoBehaviour
             }
             if (touch == true)
             {
+                CrowdAnimation.goalControl = false;
                 anim.SetBool("HappinessOfGoal", false); 
                 if (ballPosition.transform.position.z < Random.Range(120,160))
                 {
@@ -550,6 +551,7 @@ public class ComputerController : MonoBehaviour
     {
         if (other.tag == "Ball")
         {
+            CrowdAnimation.goalControl = false;
             ballPointer = other.gameObject;
             touch = true;
         }

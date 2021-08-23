@@ -51,6 +51,8 @@ public class CharacterPower : MonoBehaviour
     {
         if(touch==true && Input.GetMouseButtonUp(0))
         {
+
+            CrowdAnimation.goalControl = false;
             isTouchBall = true;
             shoot();
             
@@ -60,6 +62,8 @@ public class CharacterPower : MonoBehaviour
 
         else if (touch == true && Input.GetMouseButtonUp(1))
         {
+
+            CrowdAnimation.goalControl = false;
             isTouchBall = true;
             dribbling();
             Debug.Log("O ne sürmek öyle");
