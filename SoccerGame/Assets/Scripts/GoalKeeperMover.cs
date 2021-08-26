@@ -5,7 +5,7 @@ using UnityEngine;
 public class GoalKeeperMover : MonoBehaviour
 {
 
-    BallPosition ballPosition;
+    BallPositionSingle ballPosition;
     Transform ballPosition2;
     [SerializeField] GameObject ballPointer;
     public GameObject isPassedPointer;
@@ -66,7 +66,7 @@ public class GoalKeeperMover : MonoBehaviour
 
     private void Awake()
     {
-        ballPosition = ballPointer.GetComponent<BallPosition>();
+        ballPosition = ballPointer.GetComponent<BallPositionSingle>();
         ballPosition2 = ballPointer.GetComponent<Transform>();
 
         isPassed = isPassedPointer.GetComponent<isPassed>();

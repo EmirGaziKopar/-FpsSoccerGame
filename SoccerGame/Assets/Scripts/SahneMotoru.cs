@@ -125,5 +125,22 @@ public class SahneMotoru : MonoBehaviour
         warningText.SetActive(false);
     }
 
+    public void goMulti()
+    {
+
+
+        SceneManager.LoadScene("MultiplayerMode");
+    }
+
+    public void goLobby()
+    {
+
+
+        SceneManager.LoadScene("Lobby");
+
+
+
+    }
+
 
 }

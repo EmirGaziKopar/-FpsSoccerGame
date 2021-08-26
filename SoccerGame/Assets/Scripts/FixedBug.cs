@@ -11,7 +11,7 @@ public class FixedBug : MonoBehaviour
     [Range(15, 40)]
     [SerializeField] float power;
     [SerializeField] Transform characterPosition;
-    [SerializeField]BallPosition ballPosition;
+    [SerializeField]BallPositionSingle ballPosition;
 
     // Start is called before the first frame update
     void Start()

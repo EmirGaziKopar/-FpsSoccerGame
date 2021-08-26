@@ -1,18 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class BallPosition : MonoBehaviour
+using Photon.Realtime;
+using Photon.Pun;
+public class BallPosition : MonoBehaviourPunCallbacks
 {
     static public bool isGoal = false;
     Santra santra;
     [SerializeField] GameObject santraPointer;
     Rigidbody ballbody;
+    PhotonView pw;
 
     private void Awake()
     {
+        pw = GetComponent<PhotonView>();
         santra = santraPointer.GetComponent<Santra>();
-        ballbody = GetComponent<Rigidbody>();
+        ballbody = pw.GetComponent<Rigidbody>();
+
+
+    }
+
+    private void Start()
+    {
+        if (!pw.IsMine)
+        {
+            Destroy(ballbody);
+        }
     }
     private void Update()
     {

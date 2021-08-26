@@ -7,7 +7,7 @@ public class ComputerController : MonoBehaviour
 
     int sayac = 0;
     int sayac1 = 0;
-    BallPosition ballPosition;
+    BallPositionSingle ballPosition;
     float speed;
     [SerializeField]GameObject ballPointer;
     public GameObject BodyPointer;
@@ -78,7 +78,7 @@ public class ComputerController : MonoBehaviour
         }
         isOverBackTime = true;
         y=transform.position.y;
-        ballPosition = ballPointer.GetComponent<BallPosition>();
+        ballPosition = ballPointer.GetComponent<BallPositionSingle>();
         ball = ballPointer.GetComponent<Transform>();
         body = BodyPointer.GetComponent<Transform>();
         x = transform.rotation.x;

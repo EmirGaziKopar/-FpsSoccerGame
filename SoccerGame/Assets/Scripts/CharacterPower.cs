@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Realtime;
+using Photon.Pun;
 
-public class CharacterPower : MonoBehaviour
+public class CharacterPower : MonoBehaviourPunCallbacks
 {
 
+    PhotonView pw;
 
     int sayac = 0;
     int sayac1 = 0;
@@ -17,12 +20,33 @@ public class CharacterPower : MonoBehaviour
     [SerializeField] float dribblingPower = 10f;
     bool touch;
 
-    public static bool isTouchBall;
     
 
+    public static bool isTouchBall;
 
+    
+    private void Start()
+    {
+        pw = GetComponent<PhotonView>();
+        if (pw.IsMine)
+        {
+            if (PhotonNetwork.IsMasterClient) //oyunu kuran
+            {
+                transform.position = new Vector3(50, 4, 160);
+            }
+            else
+            {
+                
+                transform.position = new Vector3(50, 4, 70);
+            }
+        }
+        if (!pw.IsMine) //Ben deðilsem sil
+        {
+            Destroy(GetComponentInChildren<Camera>().gameObject);
+        }
+    }
 
-  
+    [PunRPC]
     public void shoot()
     {
         sayac++;
@@ -34,6 +58,7 @@ public class CharacterPower : MonoBehaviour
         shoot_audio.Play();
     }
 
+    [PunRPC]
     public void dribbling()
     {
 
@@ -49,23 +74,23 @@ public class CharacterPower : MonoBehaviour
 
     private void Update()
     {
-        if(touch==true && Input.GetMouseButtonUp(0))
+        if(touch==true && Input.GetMouseButtonUp(0) && pw.IsMine)
         {
 
             CrowdAnimation.goalControl = false;
             isTouchBall = true;
-            shoot();
+            GetComponent<PhotonView>().RPC("shoot",RpcTarget.All);
             
             Debug.Log("suuut ve gool");
             
         }
 
-        else if (touch == true && Input.GetMouseButtonUp(1))
+        else if (touch == true && Input.GetMouseButtonUp(1) && pw.IsMine)
         {
 
             CrowdAnimation.goalControl = false;
             isTouchBall = true;
-            dribbling();
+            GetComponent<PhotonView>().RPC("dribbling", RpcTarget.All);
             Debug.Log("O ne sürmek öyle");
         }
 
@@ -80,12 +105,14 @@ public class CharacterPower : MonoBehaviour
             top = other.gameObject;
             touch = true;
         }
+
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Ball")
-        {
-            touch = false;
-        }
+            {
+                touch = false;
+            }
+        
     }
 }

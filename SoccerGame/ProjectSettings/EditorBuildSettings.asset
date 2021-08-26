@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Singleplayer.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 0
-    path: Assets/Scenes/sory mode.unity
-    guid: 075a64b6ccb7b7e4fa82811d948aed03
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Main_Menu.unity
     guid: 9c432ec7f2a64d249b8a775696a43984
@@ -29,4 +29,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: cfc75600a03d1364c8db82907959383b
+  - enabled: 1
+    path: Assets/Scenes/MultiplayerMode.unity
+    guid: d96da2eda6d38ff4a9c83a4b3405f20b
+  - enabled: 1
+    path: Assets/Scenes/Lobby.unity
+    guid: 83f966f2466f38049a95337af8ccdb86
   m_configObjects: {}
